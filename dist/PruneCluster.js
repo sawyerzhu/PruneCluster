@@ -813,7 +813,7 @@ var PruneClusterForLeaflet = L.PruneClusterForLeaflet = (L.Layer ? L.Layer : L.C
         }
     }
 });
-var PruneClusterLeafletSpiderfier = (L.Layer ? L.Layer : L.Class).extend({
+var PruneClusterLeafletSpiderfier = L.PruneClusterLeafletSpiderfier = (L.Layer ? L.Layer : L.Class).extend({
     _2PI: Math.PI * 2,
     _circleFootSeparation: 25,
     _circleStartAngle: Math.PI / 6,

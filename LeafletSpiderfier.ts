@@ -4,7 +4,7 @@
 // https://github.com/Leaflet/Leaflet.markercluster because it works very perfectly
 
 
-var PruneClusterLeafletSpiderfier = ((<any>L).Layer ? (<any>L).Layer : L.Class).extend({
+var PruneClusterLeafletSpiderfier = L.PruneClusterLeafletSpiderfier = ((<any>L).Layer ? (<any>L).Layer : L.Class).extend({
 	_2PI: Math.PI * 2,
 	_circleFootSeparation: 25, //related to circumference of circle
 	_circleStartAngle: Math.PI / 6,
