@@ -378,10 +378,11 @@ var PruneCluster;
     })();
     PruneCluster_1.PruneCluster = PruneCluster;
 })(PruneCluster || (PruneCluster = {}));
+L.PruneCluster = PruneCluster;
 var PruneCluster;
 (function (PruneCluster) {
 })(PruneCluster || (PruneCluster = {}));
-var PruneClusterForLeaflet = (L.Layer ? L.Layer : L.Class).extend({
+var PruneClusterForLeaflet = L.PruneClusterForLeaflet = (L.Layer ? L.Layer : L.Class).extend({
     initialize: function (size, clusterMargin) {
         var _this = this;
         if (size === void 0) { size = 120; }

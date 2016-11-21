@@ -40,7 +40,7 @@ module PruneCluster {
 }
 
 
-var PruneClusterForLeaflet = ((<any>L).Layer ? (<any>L).Layer : L.Class).extend({
+var PruneClusterForLeaflet = L.PruneClusterForLeaflet = ((<any>L).Layer ? (<any>L).Layer : L.Class).extend({
 
 	initialize: function(size: number = 120, clusterMargin: number = 20) {
 		this.Cluster = new PruneCluster.PruneCluster();
@@ -105,8 +105,8 @@ var PruneClusterForLeaflet = ((<any>L).Layer ? (<any>L).Layer : L.Class).extend(
 				// If the zoom level doesn't change
 				if (zoomLevelAfter === zoomLevelBefore) {
 
-					// We need to filter the markers because the may be contained 
-					// by other clusters on the map (in case of a cluster merge) 
+					// We need to filter the markers because the may be contained
+					// by other clusters on the map (in case of a cluster merge)
 					var filteredBounds: PruneCluster.Bounds[] = [];
 
 					// The first step is identifying the clusters in the map that are inside the bounds
@@ -139,7 +139,7 @@ var PruneClusterForLeaflet = ((<any>L).Layer ? (<any>L).Layer : L.Class).extend(
 									isFiltered = true;
 									break;
 								}
-							}	
+							}
 							if (!isFiltered) {
 								newMarkersArea.push(markersArea[i]);
 							}
@@ -148,7 +148,7 @@ var PruneClusterForLeaflet = ((<any>L).Layer ? (<any>L).Layer : L.Class).extend(
 					}
 
 					// TODO use an option registered somewhere
-					if (markersArea.length < 200) { 
+					if (markersArea.length < 200) {
 
 						// Send an event for the LeafletSpiderfier
 						this._map.fire('overlappingmarkers', {
@@ -270,7 +270,7 @@ var PruneClusterForLeaflet = ((<any>L).Layer ? (<any>L).Layer : L.Class).extend(
 	},
 
 	ProcessView: function () {
-		// Don't do anything during the map manipulation 
+		// Don't do anything during the map manipulation
 		if (!this._map || this._zoomInProgress || this._moveInProgress) {
 			return;
 		}
@@ -351,12 +351,12 @@ var PruneClusterForLeaflet = ((<any>L).Layer ? (<any>L).Layer : L.Class).extend(
 		}
 
 		// Fourth step : update the already existing leaflet markers and create
-		// a list of required new leaflet markers 
+		// a list of required new leaflet markers
 		clusters.forEach((cluster: PruneCluster.Cluster) => {
 			var m = undefined;
 			var data = <PruneCluster.ILeafletAdapterData> cluster.data;
 
-			// Ignore collapsing clusters detected by the previous step 
+			// Ignore collapsing clusters detected by the previous step
 			if (data._leafletCollision) {
 				// Reset these clusters
 				data._leafletCollision = false;
@@ -489,7 +489,7 @@ var PruneClusterForLeaflet = ((<any>L).Layer ? (<any>L).Layer : L.Class).extend(
 							remove = false;
 
 						} else {
-							
+
 							var pb = jcluster.averagePosition;
 							var oldMinLng = pa.lng - lngMargin,
 								newMaxLng = pb.lng + lngMargin;
@@ -518,7 +518,7 @@ var PruneClusterForLeaflet = ((<any>L).Layer ? (<any>L).Layer : L.Class).extend(
 							}
 						}
 
-						// If the leaflet marker is recycled 
+						// If the leaflet marker is recycled
 						if (!remove) {
 
 							// Register the new marker

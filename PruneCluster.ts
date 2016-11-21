@@ -620,3 +620,5 @@ module PruneCluster {
 
 	}
 }
+
+L.PruneCluster = PruneCluster;
